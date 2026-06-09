@@ -82,8 +82,6 @@ aqari/
 │   └── tailwind-config.js (Tailwind theme)
 ├── netlify/edge-functions/listing-og.js (WhatsApp preview injection)
 ├── supabase/schema.sql (database setup)
-├── CLAUDE.md (auto-loaded project context)
-├── SETUP.md (deployment guide)
 └── robots.txt, .gitignore
 ```
 
@@ -177,4 +175,4 @@ MIT
 
 ## Support
 
-For issues or questions, check  `SETUP.md` (deployment guide).
+
