@@ -177,4 +177,4 @@ MIT
 
 ## Support
 
-For issues or questions, check `CLAUDE.md` (auto-loaded context) or `SETUP.md` (deployment guide).
+For issues or questions, check  `SETUP.md` (deployment guide).
