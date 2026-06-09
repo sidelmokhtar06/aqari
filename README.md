@@ -18,18 +18,33 @@ A bilingual real estate listings platform for Mauritania, built with HTML, CSS, 
 ### 1. Clone & Set Up
 
 ```bash
-git clone https://github.com/yourusername/aqari.git
+git clone https://github.com/sidelmokhtar06/aqari.git
 cd aqari
 ```
 
-### 2. Configure Supabase
+### 2. Configure Supabase (Environment Variables)
 
-Edit `js/supabase.js` with your Supabase project URL and anon key:
+**Option A: Local Development (Recommended)**
 
-```javascript
-export const SUPABASE_URL = 'https://your-project.supabase.co';
-export const SUPABASE_ANON_KEY = 'your-anon-key';
-```
+1. Copy `local-config.example.js` → `local-config.js` (this is `.gitignore`d)
+2. Edit `local-config.js` with your Supabase URL and anon key:
+   ```javascript
+   window.__SUPABASE_URL__ = 'https://your-project.supabase.co';
+   window.__SUPABASE_ANON_KEY__ = 'your-anon-key';
+   ```
+3. Add this script to the `<head>` of **each HTML file** (before other scripts):
+   ```html
+   <script src="./local-config.js"></script>
+   ```
+
+**Option B: Netlify Deployment**
+
+Set environment variables in [Netlify Dashboard](https://app.netlify.com):
+- Go to **Site settings → Build & deploy → Environment**
+- Add two variables:
+  - `SUPABASE_URL` = your Supabase URL
+  - `SUPABASE_ANON_KEY` = your anon key
+- The app reads these automatically on Netlify
 
 ### 3. Run Locally
 

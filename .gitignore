@@ -32,3 +32,8 @@ logs/
 
 # Misc
 .netlify/
+
+# Local config (contains API keys)
+local-config.js
+.env
+.env.local
