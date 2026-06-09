@@ -1,0 +1,8 @@
+# Netlify config for Aqari.
+# The edge function injects per-listing Open Graph tags so links shared on
+# WhatsApp / Facebook show the listing's photo, title and price.
+# This is optional: the site works as plain static files without it.
+
+[[edge_functions]]
+path = "/listing-detail.html"
+function = "listing-og"

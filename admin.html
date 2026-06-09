@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aqari | عقاري — Admin</title>
+  <meta name="robots" content="noindex, nofollow">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tailwind-config.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/rtl.css">
+</head>
+<body class="bg-bg text-text-main min-h-screen flex flex-col">
+
+  <!-- Navbar -->
+  <header data-nav class="aq-nav sticky top-0 z-40 bg-surface/90 border-b border-border-subtle transition-shadow">
+    <nav class="max-w-container mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+      <a href="index.html" class="flex items-center gap-2 font-extrabold text-xl text-primary">
+        Aqari <span class="text-accent font-arabic">| عقاري</span>
+      </a>
+      <div class="flex items-center gap-2">
+        <button data-lang-toggle class="px-3 py-1.5 text-sm font-bold rounded-card border border-border-subtle hover:border-primary text-primary">
+          <span data-i18n="nav.lang_toggle">عر</span>
+        </button>
+        <button id="logout-btn" class="hidden px-3 py-1.5 text-sm font-bold rounded-card bg-danger text-white inline-flex items-center gap-1">
+          <span class="material-symbols-outlined !text-base">logout</span><span data-i18n="admin.logout">Déconnexion</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="max-w-container mx-auto px-4 sm:px-6 py-8 w-full flex-1">
+
+    <!-- Login view -->
+    <section id="login-view" class="max-w-md mx-auto mt-10">
+      <div class="bg-surface border border-border-subtle rounded-panel p-8 shadow-lift">
+        <h1 class="text-xl font-bold text-primary text-center" data-i18n="admin.login_title">Connexion administrateur</h1>
+        <form id="login-form" class="mt-6 space-y-4">
+          <div>
+            <label class="block text-sm font-semibold mb-1" data-i18n="admin.email">E-mail</label>
+            <input name="email" type="email" required class="aq-input w-full rounded-card px-3 py-2.5 border border-border-subtle" placeholder="admin@aqari.mr">
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-1" data-i18n="admin.password">Mot de passe</label>
+            <input name="password" type="password" required class="aq-input w-full rounded-card px-3 py-2.5 border border-border-subtle" placeholder="••••••••">
+          </div>
+          <p id="login-error" class="hidden text-danger text-sm" data-i18n="admin.login_error">E-mail ou mot de passe incorrect.</p>
+          <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 rounded-card" data-i18n="admin.login">Se connecter</button>
+        </form>
+        <p id="demo-note" class="hidden text-xs text-text-muted text-center mt-4"></p>
+      </div>
+    </section>
+
+    <!-- Dashboard view -->
+    <section id="dashboard-view" class="hidden">
+      <div class="flex items-center justify-between gap-4 flex-wrap mb-6">
+        <h1 class="text-2xl font-bold text-primary" data-i18n="admin.all_listings">Toutes les annonces</h1>
+        <div class="flex gap-3 text-sm">
+          <div class="bg-surface border border-border-subtle rounded-card px-4 py-2 text-center">
+            <p class="text-text-muted text-xs" data-i18n="admin.pending">En attente</p>
+            <p id="stat-pending" class="font-extrabold text-lg text-accent">0</p>
+          </div>
+          <div class="bg-surface border border-border-subtle rounded-card px-4 py-2 text-center">
+            <p class="text-text-muted text-xs" data-i18n="admin.approved">Approuvé</p>
+            <p id="stat-approved" class="font-extrabold text-lg text-success">0</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-surface border border-border-subtle rounded-panel overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead class="bg-bg text-text-muted text-xs uppercase tracking-wide">
+              <tr>
+                <th class="text-start px-4 py-3" data-i18n="admin.col_title">Titre</th>
+                <th class="text-start px-4 py-3" data-i18n="admin.col_type">Type</th>
+                <th class="text-start px-4 py-3" data-i18n="admin.col_location">Zone</th>
+                <th class="text-start px-4 py-3" data-i18n="admin.col_price">Prix</th>
+                <th class="text-start px-4 py-3" data-i18n="admin.col_status">Statut</th>
+                <th class="text-end px-4 py-3" data-i18n="admin.col_actions">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-rows" class="divide-y divide-border-subtle"></tbody>
+          </table>
+        </div>
+        <p id="admin-empty" class="hidden text-center text-text-muted py-10" data-i18n="listing.empty">Aucune annonce.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-primary text-white/80">
+    <div class="border-t border-white/10 py-4 text-center text-xs">
+      © 2026 Aqari. <span data-i18n="footer.rights">Tous droits réservés.</span>
+    </div>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>

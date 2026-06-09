@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aqari | عقاري — Immobilier en Mauritanie</title>
+  <meta name="description" content="Aqari (عقاري) — Trouvez votre bien en Mauritanie. Annonces immobilières à Nouakchott : appartements, villas, terrains, commerces. Achat et location.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Aqari">
+  <meta property="og:title" content="Aqari | عقاري — Immobilier en Mauritanie">
+  <meta property="og:description" content="Trouvez votre bien en Mauritanie. Achat et location à Nouakchott.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1200&q=70">
+  <meta name="twitter:card" content="summary_large_image">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tailwind-config.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/rtl.css">
+</head>
+<body class="bg-bg text-text-main">
+
+  <!-- Navbar -->
+  <header data-nav class="aq-nav sticky top-0 z-40 bg-surface/90 border-b border-border-subtle transition-shadow">
+    <nav class="max-w-container mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+      <a href="index.html" class="flex items-center gap-2 font-extrabold text-xl text-primary">
+        Aqari <span class="text-accent font-arabic">| عقاري</span>
+      </a>
+      <div class="hidden md:flex items-center gap-7 text-sm font-medium">
+        <a href="index.html" class="text-primary" data-i18n="nav.home">Accueil</a>
+        <a href="listings.html" class="text-text-muted hover:text-primary" data-i18n="nav.listings">Annonces</a>
+        <a href="post-listing.html" class="text-text-muted hover:text-primary" data-i18n="nav.post_listing">Publier</a>      </div>
+      <div class="flex items-center gap-2">
+        <button data-lang-toggle class="px-3 py-1.5 text-sm font-bold rounded-card border border-border-subtle hover:border-primary text-primary">
+          <span data-i18n="nav.lang_toggle">عر</span>
+        </button>
+        <button data-mobile-toggle class="md:hidden p-2 text-primary" aria-label="Menu">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+      </div>
+    </nav>
+    <div data-mobile-menu class="hidden md:hidden border-t border-border-subtle px-4 py-3 flex-col gap-3 text-sm font-medium bg-surface">
+      <a href="index.html" class="block py-1" data-i18n="nav.home">Accueil</a>
+      <a href="listings.html" class="block py-1" data-i18n="nav.listings">Annonces</a>
+      <a href="post-listing.html" class="block py-1" data-i18n="nav.post_listing">Publier</a>    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative">
+    <div class="bg-gradient-to-br from-primary to-primary-dark">
+      <div class="max-w-container mx-auto px-4 sm:px-6 py-16 sm:py-24 text-center text-white">
+        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight" data-i18n="hero.title">Trouvez votre bien en Mauritanie</h1>
+        <p class="mt-4 text-white/80 text-base sm:text-lg" data-i18n="hero.subtitle">Des milliers d’annonces à Nouakchott et partout en Mauritanie</p>
+
+        <!-- Search bar -->
+        <form id="hero-search" class="mt-8 bg-surface rounded-panel shadow-modal p-3 sm:p-4 flex flex-col sm:flex-row sm:flex-wrap gap-3 max-w-4xl mx-auto text-text-main">
+          <input type="text" name="q" class="aq-input w-full sm:flex-1 sm:min-w-[160px] bg-bg rounded-card px-3 py-2.5 border border-border-subtle text-sm" data-i18n-placeholder="hero.search_placeholder" placeholder="Rechercher un bien...">
+          <div class="flex bg-bg rounded-card p-1 text-sm font-semibold">
+            <label class="flex-1">
+              <input type="radio" name="transaction" value="location" class="peer sr-only" checked>
+              <span class="block text-center px-4 py-2 rounded-card cursor-pointer peer-checked:bg-primary peer-checked:text-white text-text-muted" data-i18n="filters.location">Location</span>
+            </label>
+            <label class="flex-1">
+              <input type="radio" name="transaction" value="vente" class="peer sr-only">
+              <span class="block text-center px-4 py-2 rounded-card cursor-pointer peer-checked:bg-primary peer-checked:text-white text-text-muted" data-i18n="filters.vente">Vente</span>
+            </label>
+          </div>
+          <select name="location" class="aq-input flex-1 bg-bg rounded-card px-3 py-2.5 border border-border-subtle text-sm">
+            <option value="" data-i18n="hero.all_locations">Toutes les zones</option>
+          </select>
+          <select name="type" class="aq-input flex-1 bg-bg rounded-card px-3 py-2.5 border border-border-subtle text-sm">
+            <option value="" data-i18n="hero.all_types">Tous les types</option>
+          </select>
+          <button type="submit" class="bg-accent hover:brightness-95 text-primary font-bold px-6 py-2.5 rounded-card inline-flex items-center justify-center gap-2">
+            <span class="material-symbols-outlined !text-lg">search</span>
+            <span data-i18n="hero.search_button">Rechercher</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="max-w-container mx-auto px-4 sm:px-6 py-12 sm:py-16">
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="text-2xl font-bold text-primary" data-i18n="cat.title">Explorer par catégories</h2>
+      <a href="listings.html" class="text-sm font-semibold text-accent hover:underline" data-i18n="cat.see_all">Voir tout</a>
+    </div>
+    <div id="category-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4"></div>
+  </section>
+
+  <!-- Featured -->
+  <section class="max-w-container mx-auto px-4 sm:px-6 pb-16">
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="text-2xl font-bold text-primary" data-i18n="featured.title">Annonces à la une</h2>
+    </div>
+    <div id="featured-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    <div class="text-center mt-10">
+      <a href="listings.html" class="inline-block bg-primary hover:bg-primary-dark text-white font-bold px-8 py-3 rounded-card" data-i18n="featured.see_all">Voir toutes les annonces</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-primary text-white/80 mt-auto">
+    <div class="max-w-container mx-auto px-4 sm:px-6 py-12 grid sm:grid-cols-3 gap-8">
+      <div>
+        <div class="font-extrabold text-xl text-white">Aqari <span class="text-accent font-arabic">| عقاري</span></div>
+        <p class="mt-3 text-sm" data-i18n="footer.tagline">La référence de l’immobilier à Nouakchott.</p>
+      </div>
+      <div class="flex flex-col gap-2 text-sm">
+        <a href="#" class="hover:text-white" data-i18n="footer.about">À propos</a>
+        <a href="#" class="hover:text-white" data-i18n="footer.contact">Contact</a>
+        <a href="#" class="hover:text-white" data-i18n="footer.privacy">Confidentialité</a>
+      </div>
+      <div class="text-sm">
+        <p>Nouakchott, Mauritanie</p>
+        <p class="mt-2">contact@aqari.mr</p>
+      </div>
+    </div>
+    <div class="border-t border-white/10 py-4 text-center text-xs">
+      © 2026 Aqari. <span data-i18n="footer.rights">Tous droits réservés.</span>
+    </div>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+  <script type="module">
+    import { LOCATIONS, PROPERTY_TYPES, TYPE_ICON, typeLabel, fetchTypeCounts, fetchFeaturedListings, listingCardHTML } from './js/app.js';
+    import { t } from './js/i18n.js';
+
+    // Populate hero dropdowns
+    function fillSelects() {
+      document.querySelectorAll('select[name="location"]').forEach((sel) => {
+        LOCATIONS.forEach((loc) => sel.insertAdjacentHTML('beforeend', `<option value="${loc}">${loc}</option>`));
+      });
+      const typeSel = document.querySelector('select[name="type"]');
+      PROPERTY_TYPES.forEach((tp) => typeSel.insertAdjacentHTML('beforeend', `<option value="${tp}">${typeLabel(tp)}</option>`));
+    }
+
+    // Hero search → listings page with query params
+    document.getElementById('hero-search').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const params = new URLSearchParams();
+      ['q', 'transaction', 'location', 'type'].forEach((k) => { if (fd.get(k)) params.set(k, fd.get(k)); });
+      location.href = 'listings.html?' + params.toString();
+    });
+
+    async function renderCategories() {
+      const counts = await fetchTypeCounts();
+      const grid = document.getElementById('category-grid');
+      grid.innerHTML = PROPERTY_TYPES.map((tp) => `
+        <a href="listings.html?type=${tp}" class="aq-card bg-surface border border-border-subtle rounded-card p-5 text-center flex flex-col items-center gap-2">
+          <span class="material-symbols-outlined !text-3xl text-accent">${TYPE_ICON[tp]}</span>
+          <span class="font-semibold text-sm text-text-main">${typeLabel(tp)}</span>
+          <span class="text-xs text-text-muted">${counts[tp] || 0} ${t('cat.count')}</span>
+        </a>`).join('');
+    }
+
+    async function renderFeatured() {
+      const grid = document.getElementById('featured-grid');
+      grid.innerHTML = skeletons(6);
+      try {
+        const items = await fetchFeaturedListings(6);
+        grid.innerHTML = items.length ? items.map(listingCardHTML).join('') : `<p class="col-span-full text-center text-text-muted py-10">${t('listing.empty')}</p>`;
+      } catch {
+        grid.innerHTML = `<p class="col-span-full text-center text-danger py-10">${t('common.error')}</p>`;
+      }
+    }
+
+    function skeletons(n) {
+      return Array.from({ length: n }).map(() => `
+        <div class="bg-surface rounded-card border border-border-subtle overflow-hidden">
+          <div class="aq-skeleton h-48 w-full"></div>
+          <div class="p-4 space-y-3">
+            <div class="aq-skeleton h-4 w-3/4 rounded"></div>
+            <div class="aq-skeleton h-3 w-1/2 rounded"></div>
+            <div class="aq-skeleton h-9 w-full rounded"></div>
+          </div>
+        </div>`).join('');
+    }
+
+    fillSelects();
+    renderCategories();
+    renderFeatured();
+    // Re-render dynamic content on language switch
+    document.addEventListener('langchange', () => { renderCategories(); renderFeatured(); });
+  </script>
+</body>
+</html>

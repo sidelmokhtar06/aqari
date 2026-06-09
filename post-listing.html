@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aqari | عقاري — Publier une annonce</title>
+  <meta name="description" content="Publiez gratuitement votre annonce immobilière à Nouakchott sur Aqari. Ajoutez des photos et touchez des milliers d’acheteurs.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Aqari">
+  <meta property="og:title" content="Publier une annonce — Aqari">
+  <meta property="og:description" content="Publiez gratuitement votre bien immobilier à Nouakchott.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1200&q=70">
+  <meta name="twitter:card" content="summary_large_image">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tailwind-config.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/rtl.css">
+</head>
+<body class="bg-bg text-text-main min-h-screen flex flex-col">
+
+  <!-- Navbar -->
+  <header data-nav class="aq-nav sticky top-0 z-40 bg-surface/90 border-b border-border-subtle transition-shadow">
+    <nav class="max-w-container mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+      <a href="index.html" class="flex items-center gap-2 font-extrabold text-xl text-primary">
+        Aqari <span class="text-accent font-arabic">| عقاري</span>
+      </a>
+      <div class="hidden md:flex items-center gap-7 text-sm font-medium">
+        <a href="index.html" class="text-text-muted hover:text-primary" data-i18n="nav.home">Accueil</a>
+        <a href="listings.html" class="text-text-muted hover:text-primary" data-i18n="nav.listings">Annonces</a>
+        <a href="post-listing.html" class="text-primary" data-i18n="nav.post_listing">Publier</a>      </div>
+      <div class="flex items-center gap-2">
+        <button data-lang-toggle class="px-3 py-1.5 text-sm font-bold rounded-card border border-border-subtle hover:border-primary text-primary">
+          <span data-i18n="nav.lang_toggle">عر</span>
+        </button>
+        <button data-mobile-toggle class="md:hidden p-2 text-primary" aria-label="Menu">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+      </div>
+    </nav>
+    <div data-mobile-menu class="hidden md:hidden border-t border-border-subtle px-4 py-3 flex-col gap-3 text-sm font-medium bg-surface">
+      <a href="index.html" class="block py-1" data-i18n="nav.home">Accueil</a>
+      <a href="listings.html" class="block py-1" data-i18n="nav.listings">Annonces</a>
+      <a href="post-listing.html" class="block py-1" data-i18n="nav.post_listing">Publier</a>    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-10 w-full flex-1">
+    <h1 class="text-2xl sm:text-3xl font-extrabold text-primary" data-i18n="post.title">Publier une annonce</h1>
+    <p class="text-text-muted mt-1" data-i18n="post.subtitle">Touchez des milliers d’acheteurs à Nouakchott.</p>
+
+    <!-- Success message (hidden until submit) -->
+    <div id="post-success" class="hidden mt-8 bg-emerald-50 border border-success/30 text-success rounded-panel p-6 text-center">
+      <span class="material-symbols-outlined !text-5xl">check_circle</span>
+      <p class="mt-3 font-semibold" data-i18n="post.success">Votre annonce est en attente de validation. Nous vous contacterons bientôt.</p>
+      <button id="post-another" class="mt-5 bg-primary text-white font-bold px-6 py-2.5 rounded-card" data-i18n="post.another">Publier une autre annonce</button>
+    </div>
+
+    <form id="post-form" class="mt-8 space-y-8" novalidate>
+      <!-- Honeypot: off-screen field that bots autofill but humans never see -->
+      <div class="absolute left-[-9999px] w-px h-px overflow-hidden" aria-hidden="true">
+        <label>Laissez ce champ vide<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+      </div>
+      <!-- Property -->
+      <fieldset class="bg-surface border border-border-subtle rounded-panel p-6 space-y-4">
+        <legend class="font-bold text-primary px-2" data-i18n="post.section_property">Informations du bien</legend>
+        <div>
+          <label class="block text-sm font-semibold mb-1"><span data-i18n="post.f_title">Titre de l’annonce</span> <span class="text-danger">*</span></label>
+          <input name="title" required class="aq-input w-full rounded-card px-3 py-2.5 border border-border-subtle" placeholder="Villa de luxe à Tevragh Zeina">
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-semibold mb-1"><span data-i18n="post.f_type">Type de bien</span> <span class="text-danger">*</span></label>
+            <select name="type" required class="aq-input w-full rounded-card px-3 py-2.5 border border-border-subtle">
+              <option value="" data-i18n="post.select_type">Sélectionner un type</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-1"><span data-i18n="post.f_transaction">Transaction</span> <span class="text-danger">*</span></label>
+            <select name="transaction" required class="aq-input w-full rounded-card px-3 py-2.5 border border-border-subtle">
+              <option value="vente" data-i18n="filters.vente">Vente</option>
+              <option value="location" data-i18n="filters.location">Location</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Pricing -->
+      <fieldset class="bg-surface border border-border-subtle rounded-panel p-6 space-y-4">
+        <legend class="font-bold text-primary px-2" data-i18n="post.section_pricing">Prix & dimensions</legend>
+        <div class="grid sm:grid-cols-3 gap-4">
+          <div>
+            <label class="block text-sm font-semibold mb-1"><span data-i18n="post.f_price">Prix (MRU)</span> <span class="text-danger">*</span></label>
+            <input name="price" type="number" min="0" required class="aq-input w-full rounded-card px-3 py-2.5 border border-border-subtle" placeholder="150000">
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-1" data-i18n="post.f_area">Surface (m²)</label>
+            <input name="area_m2" type="number" min="0" class="aq-input w-full rounded-card px-3 py-2.5 border border-border-subtle" placeholder="200">
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-1" data-i18n="post.f_rooms">Nombre de chambres</label>
+            <input name="rooms" type="number" min="0" class="aq-input w-full rounded-card px-3 py-2.5 border border-border-subtle" placeholder="4">
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Location -->
+      <fieldset class="bg-surface border border-border-subtle rounded-panel p-6">
+        <legend class="font-bold text-primary px-2" data-i18n="post.section_location">Localisation</legend>
+        <label class="block text-sm font-semibold mb-1"><span data-i18n="post.f_location">Zone (Nouakchott)</span> <span class="text-danger">*</span></label>
+        <select name="location" required class="aq-input w-full rounded-card px-3 py-2.5 border border-border-subtle">
+          <option value="" data-i18n="post.select_location">Sélectionner une zone</option>
+        </select>
+      </fieldset>
+
+      <!-- Media & details -->
+      <fieldset class="bg-surface border border-border-subtle rounded-panel p-6 space-y-4">
+        <legend class="font-bold text-primary px-2" data-i18n="post.section_media">Détails & médias</legend>
+        <div>
+          <label class="block text-sm font-semibold mb-1"><span data-i18n="post.f_description">Description</span> <span class="text-danger">*</span></label>
+          <textarea name="description" required rows="4" class="aq-input w-full rounded-card px-3 py-2.5 border border-border-subtle"></textarea>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold mb-1" data-i18n="post.f_photos">Photos</label>
+          <label for="image-files" class="flex flex-col items-center justify-center gap-2 w-full rounded-card px-3 py-7 border-2 border-dashed border-border-subtle cursor-pointer hover:border-primary text-text-muted text-center transition">
+            <span class="material-symbols-outlined !text-3xl text-accent">add_photo_alternate</span>
+            <span class="text-sm font-medium" data-i18n="post.photos_cta">Ajoutez des photos depuis votre téléphone</span>
+            <span class="text-xs" data-i18n="post.photos_hint">JPG, PNG ou WebP · 6 photos max · 5 Mo chacune</span>
+          </label>
+          <input id="image-files" name="image_files" type="file" accept="image/png,image/jpeg,image/webp" multiple class="hidden">
+          <div id="image-previews" class="grid grid-cols-3 sm:grid-cols-6 gap-2 mt-3"></div>
+          <p id="upload-status" class="hidden text-xs text-text-muted mt-2"></p>
+          <details class="mt-3">
+            <summary class="text-xs text-text-muted cursor-pointer select-none" data-i18n="post.or_urls">Ou coller des liens d’images</summary>
+            <input name="images" class="aq-input w-full rounded-card px-3 py-2.5 border border-border-subtle mt-2" placeholder="https://image1.jpg, https://image2.jpg">
+            <p class="text-xs text-text-muted mt-1" data-i18n="post.f_images_hint">Liens directs vers des images JPG ou PNG.</p>
+          </details>
+        </div>
+      </fieldset>
+
+      <!-- Contact -->
+      <fieldset class="bg-surface border border-border-subtle rounded-panel p-6">
+        <legend class="font-bold text-primary px-2" data-i18n="post.section_contact">Coordonnées</legend>
+        <label class="block text-sm font-semibold mb-1"><span data-i18n="post.f_phone">Numéro de téléphone</span> <span class="text-danger">*</span></label>
+        <input name="phone" required class="aq-input w-full rounded-card px-3 py-2.5 border border-border-subtle" placeholder="+222 00 00 00 00">
+        <p class="text-xs text-text-muted mt-1" data-i18n="post.f_phone_hint">Visible par les acheteurs pour le contact WhatsApp.</p>
+      </fieldset>
+
+      <p id="form-error" class="hidden text-danger text-sm font-medium" data-i18n="post.required_error">Veuillez remplir tous les champs obligatoires.</p>
+
+      <button type="submit" id="submit-btn" class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3.5 rounded-card text-lg" data-i18n="post.submit">Publier l’annonce</button>
+    </form>
+  </main>
+
+  <footer class="bg-primary text-white/80">
+    <div class="border-t border-white/10 py-4 text-center text-xs">
+      © 2026 Aqari. <span data-i18n="footer.rights">Tous droits réservés.</span>
+    </div>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+  <script type="module" src="js/post.js"></script>
+</body>
+</html>

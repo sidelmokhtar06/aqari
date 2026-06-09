@@ -1,0 +1,30 @@
+/* Arabic RTL overrides. Applied when dir="rtl" is set. */
+
+html[dir="rtl"] body {
+  font-family: "Tajawal", "Noto Sans Arabic", system-ui, sans-serif;
+  letter-spacing: 0;
+}
+
+/* Arabic headline line-height. */
+html[dir="rtl"] h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] h3 {
+  line-height: 1.5;
+}
+
+/* Icons stay LTR. */
+html[dir="rtl"] .material-symbols-outlined {
+  direction: ltr;
+  display: inline-block;
+}
+
+/* Keep phone numbers and wa.me display LTR */
+html[dir="rtl"] a[href^="tel:"],
+html[dir="rtl"] a[href*="wa.me"] {
+  direction: ltr;
+}
+
+/* Skeleton animation reversed. */
+html[dir="rtl"] .aq-skeleton {
+  animation-direction: reverse;
+}
