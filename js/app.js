@@ -63,7 +63,7 @@ export const MOCK_LISTINGS = [
   { title: 'Terrain résidentiel - Arafat', type: 'terrain', transaction: 'vente', price: 3200000, location: 'Arafat', area_m2: 400, rooms: null, description: 'Terrain viabilisé dans zone résidentielle en plein développement.', phone: '22248889900', is_featured: false },
   { title: 'Villa avec piscine - Tevragh Zeina', type: 'villa', transaction: 'location', price: 250000, location: 'Tevragh Zeina', area_m2: 500, rooms: 6, description: 'Villa haut de gamme avec piscine, jardin paysager et personnel de maison.', phone: '22249990011', is_featured: false },
   { title: 'Bureau open-space - Ksar', type: 'bureau', transaction: 'location', price: 60000, location: 'Ksar', area_m2: 100, rooms: 2, description: 'Open-space lumineux, salle de réunion, idéal startup ou PME.', phone: '22245101112', is_featured: false },
-  { title: 'Studio meublé - Sebkha', type: 'chambre', transaction: 'location', price: 22000, location: 'Sebkha', area_m2: 30, rooms: 1, description: 'Studio meublé indépendant avec coin cuisine et salle d/'eau privée.', phone: '22246212223', is_featured: false },
+  { title: 'Studio meublé - Sebkha', type: 'chambre', transaction: 'location', price: 22000, location: 'Sebkha', area_m2: 30, rooms: 1, description: "Studio meublé indépendant avec coin cuisine et salle d'eau privée.", phone: '22246212223', is_featured: false },
 ].map((l, i) => ({
   id: 'mock-' + (i + 1),
   images: [],
