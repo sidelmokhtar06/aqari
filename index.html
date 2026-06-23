@@ -11,13 +11,13 @@
   <meta property="og:description" content="Trouvez votre bien en Mauritanie. Achat et location à Nouakchott.">
   <meta property="og:image" content="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1200&q=70">
   <meta name="twitter:card" content="summary_large_image">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="js/tailwind-config.js"></script>
+  <link rel="stylesheet" href="css/output.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/theme.css">
   <link rel="stylesheet" href="css/rtl.css">
+  <script src="./local-config.js"></script>
 </head>
 <body class="bg-bg text-text-main">
 
@@ -55,21 +55,21 @@
 
         <!-- Search bar -->
         <form id="hero-search" class="mt-8 bg-surface rounded-panel shadow-modal p-3 sm:p-4 flex flex-col sm:flex-row sm:flex-wrap gap-3 max-w-4xl mx-auto text-text-main">
-          <input type="text" name="q" class="aq-input w-full sm:flex-1 sm:min-w-[160px] bg-bg rounded-card px-3 py-2.5 border border-border-subtle text-sm" data-i18n-placeholder="hero.search_placeholder" placeholder="Rechercher un bien...">
+          <input type="text" name="q" class="aq-input w-full sm:flex-1 sm:min-w-[160px] bg-bg rounded-card px-3 py-2.5 border border-border-subtle text-sm" data-i18n-placeholder="hero.search_placeholder" placeholder="Rechercher un bien..." aria-label="Rechercher un bien" data-i18n-aria-label="hero.search_placeholder">
           <div class="flex bg-bg rounded-card p-1 text-sm font-semibold">
             <label class="flex-1">
-              <input type="radio" name="transaction" value="location" class="peer sr-only" checked>
+              <input type="radio" name="transaction" value="location" class="peer sr-only" checked aria-label="Location" data-i18n-aria-label="filters.location">
               <span class="block text-center px-4 py-2 rounded-card cursor-pointer peer-checked:bg-primary peer-checked:text-white text-text-muted" data-i18n="filters.location">Location</span>
             </label>
             <label class="flex-1">
-              <input type="radio" name="transaction" value="vente" class="peer sr-only">
+              <input type="radio" name="transaction" value="vente" class="peer sr-only" aria-label="Vente" data-i18n-aria-label="filters.vente">
               <span class="block text-center px-4 py-2 rounded-card cursor-pointer peer-checked:bg-primary peer-checked:text-white text-text-muted" data-i18n="filters.vente">Vente</span>
             </label>
           </div>
-          <select name="location" class="aq-input flex-1 bg-bg rounded-card px-3 py-2.5 border border-border-subtle text-sm">
+          <select name="location" class="aq-input flex-1 bg-bg rounded-card px-3 py-2.5 border border-border-subtle text-sm" aria-label="Zone" data-i18n-aria-label="hero.all_locations">
             <option value="" data-i18n="hero.all_locations">Toutes les zones</option>
           </select>
-          <select name="type" class="aq-input flex-1 bg-bg rounded-card px-3 py-2.5 border border-border-subtle text-sm">
+          <select name="type" class="aq-input flex-1 bg-bg rounded-card px-3 py-2.5 border border-border-subtle text-sm" aria-label="Type de bien" data-i18n-aria-label="hero.all_types">
             <option value="" data-i18n="hero.all_types">Tous les types</option>
           </select>
           <button type="submit" class="bg-accent hover:brightness-95 text-primary font-bold px-6 py-2.5 rounded-card inline-flex items-center justify-center gap-2">

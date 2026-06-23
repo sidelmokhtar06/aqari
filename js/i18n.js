@@ -284,6 +284,10 @@ export function applyLang(lang) {
   document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
     el.setAttribute('placeholder', t(el.getAttribute('data-i18n-placeholder'), lang));
   });
+  // Translate aria-labels (accessible names for inputs without a visible label)
+  document.querySelectorAll('[data-i18n-aria-label]').forEach((el) => {
+    el.setAttribute('aria-label', t(el.getAttribute('data-i18n-aria-label'), lang));
+  });
   // Reveal cloaked content now that text is ready
   document.querySelectorAll('[data-cloak]').forEach((el) => el.removeAttribute('data-cloak'));
 
